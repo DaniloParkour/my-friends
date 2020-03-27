@@ -5,14 +5,13 @@ const routes = require('./routes');
 
 const app = express(); //Creating the application
 
+//CORS no ambiente de desenvolvimento
+app.use(cors());
 
 //With the line above, every request with body the express'll convert the body request from JSON to JS Literal Object
 app.use(express.json());
 
 app.use(routes);
-
-//CORS no ambiente de desenvolvimento
-app.use(cors());
 
 /*
 CORS no ambiente de produção
