@@ -58,7 +58,7 @@ module.exports = {
         */
 
         //Put the COUNT on response's header to let only data on ison incidents
-        response.header('X-Total_Count', count['count(*)']);
+        response.header('X-Total-Count', count['count(*)']);
         //OBS: The name 'count(*)' can be verified with "console.log(count)"
         
         return response.json(incidents);
