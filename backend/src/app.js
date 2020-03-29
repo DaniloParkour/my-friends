@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-
+const {errors} = require('celebrate');
 const routes = require('./routes');
 
 const app = express(); //Creating the application
@@ -12,6 +12,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use(routes);
+
+app.use(errors());
 
 /*
 CORS no ambiente de produção
@@ -76,5 +78,5 @@ ________________________________________________________________________________
 
 //app.get('/contatos');
 
-app.listen(3333); //Listen 3333 port
-
+//app.listen(3333); //Listen 3333 port
+module.exports = app;
