@@ -8,6 +8,8 @@ import logoImg from '../../assets/logo.png';
 import styles from './styles';
 import api from '../../services/api';
 
+import {COLOR_PALETTE_PINK, COLOR_WHITE} from '../../util/AppConstants';
+
 export default function Incidents() {
 
     const [incidents, setIncidents] = useState([]);
@@ -58,7 +60,18 @@ export default function Incidents() {
     return(
         <View style={styles.container}>
             <View style={styles.header}>
-                <Image source={logoImg} />
+
+                <View style={styles.navBar}>
+                    <TouchableOpacity onPress={() => {navigation.navigate('Login')}}>
+                        <View style={{width: 40, height: 40, backgroundColor: COLOR_PALETTE_PINK.COLOR, 
+                            alignItems: 'center', justifyContent: "center", borderRadius: 20}}>
+                            <Feather name='user' size={28} color={COLOR_WHITE} />
+                        </View>
+                        
+                    </TouchableOpacity>
+                    <Image source={logoImg} />
+                </View>
+                
                 <Text style={styles.headerText}>
                     Total de <Text style={styles.headerTextBold}>{total} casos</Text>
                 </Text>
@@ -76,23 +89,31 @@ export default function Incidents() {
                 onEndReachedThreshold = {0.2} //When left 20% to end list load more itens (calls onEndReached)
                 renderItem = { ( {item : incident} ) => (
                     <View style={styles.incident}>
-                        <Text style={styles.incidentProperty}>ONG:</Text>
-                        <Text style={styles.incidentValue}>{incident.name}</Text>
-                        
-                        <Text style={styles.incidentProperty}>CASO:</Text>
-                        <Text style={styles.incidentValue}>{incident.title}</Text>
-                        
-                        <Text style={styles.incidentProperty}>Valor</Text>
-                        <Text style={styles.incidentValue}>{incident.value}</Text>
+                        <View style={{flexDirection: 'row', alignItems: 'flex-start' }}>
+                            <Text style={styles.incidentProperty}>ONG:</Text>
+                            <Text style={styles.incidentValue}>{incident.name}</Text>
+                        </View>
 
-                        <TouchableOpacity 
-                            style={styles.detailsButton}
-                            onPress={() => navigateToDetails(incident)}
-                        >
-                            <Text style={styles.detailsButtonText}>Ver Mais Informações</Text>
-                            <Feather name="arrow-right" size={16} color={'#e02041'}/>
+                        <View style={{flexDirection: 'row' }}>
+                            <Text style={styles.incidentProperty}>CASO:</Text>
+                            <Text style={styles.incidentValue}>{incident.title}</Text>
+                        </View>
+
+                        <View style={{flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <View style={{flexDirection: 'row'}}>
+                                <Text style={styles.incidentProperty}>Valor</Text>
+                                <Text style={styles.incidentValue}>{incident.value}</Text>                                
+                            </View>
+
+                            <TouchableOpacity
+                                style={styles.detailsButton}
+                                onPress={() => navigateToDetails(incident)}
+                            >
+                                <Feather name="arrow-right" size={32} color={'#e02041'}/>
                         </TouchableOpacity>
 
+                        </View>
+                        
                     </View>
                 )}
             />

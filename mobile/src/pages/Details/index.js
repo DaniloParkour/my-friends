@@ -6,6 +6,7 @@ import * as MailComposer from 'expo-mail-composer';
 import {Feather} from '@expo/vector-icons';
 
 import logoImg from '../../assets/logo.png';
+import { COLOR_PALETTE_PINK } from '../../util/AppConstants';
 
 export default function Details() {
 
@@ -28,28 +29,46 @@ export default function Details() {
     }
 
     function sendWhatsapp() {
-        Linking.openURL(`whatsapp://send?phone=${incident.sendWhatsapp}&text=${message}`)
+        Linking.openURL(`whatsapp://send?phone=${incident.whatsapp}&text=${message}`)
     }
 
     return(
         <View style={styles.container}>
             <View>
-                <Image source={logoImg} />
+                <View style={styles.navBar}>
                 <TouchableOpacity onPress={navigateBack}>
                     <Feather name='arrow-left' size={28} color={'#e82041'} />
                 </TouchableOpacity>
-
+                <Image source={logoImg} />
+                </View>
+                
                 <View style={styles.incident}>
                     <View style={styles.incident}>
-                            <Text style={styles.incidentProperty}>ONG:</Text>
-                            <Text style={styles.incidentValue}>{incident.name} ({incident.city} - {incident.uf})</Text>
+                        
+                            <View style={{flexDirection: 'row'}}>
+                                <Text style={styles.incidentProperty}>{incident.name} ({incident.city} - {incident.uf})</Text>
+                            </View>
+
+                            <View style={{flexDirection: 'row'}}>
+                                <Text style={styles.incidentProperty}>{incident.value}</Text>
+                            </View>
                             
-                            <Text style={styles.incidentProperty}>CASO:</Text>
-                            <Text style={styles.incidentValue}>{incident.title}</Text>
-                            
-                            <Text style={styles.incidentProperty}>Valor</Text>
-                            <Text style={styles.incidentValue}>{incident.value}</Text>
                         </View>
+                            
+                        <View style={styles.incident}>
+                            <View style={{alignItems: 'center'}}>
+                                <Text style={[styles.incidentProperty, {textAlign: 'left', paddingBottom: 6}]}>{incident.title}</Text>
+                            </View>
+
+                            <Text style={styles.incidentValue}>{incident.description}</Text>
+
+                        </View>
+
+                        <TouchableOpacity onPress={() => {alert('Implements Photos!')}}>
+                            <Text style={[styles.actionText, {color: COLOR_PALETTE_PINK.COLOR,
+                                alignSelf: 'flex-end', fontStyle: 'italic'}]}> Ver fotos </Text>
+                        </TouchableOpacity>
+
                 </View>
             </View>
 

@@ -3,11 +3,30 @@ import constants from 'expo-constants';
 import {COLOR_BLACK, COLOR_WHITE, COLOR_PALETTE_PINK, COLOR_PALETTE_GREEN, COLOR_PALETTE_BLUE} from '../../util/AppConstants';
 
 export default StyleSheet.create({
+
     container: {
         flex: 1,
         paddingHorizontal: 24,
         paddingTop: constants.statusBarHeight + 20,
+    }, loginContent: {
+        height: 420,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+    }, textInput: {
+        borderColor: COLOR_PALETTE_PINK.COLOR,
+        borderWidth: 1,
+        borderRadius: 14,
+        fontSize: 16,
+        height: 50,
+        width: '100%',
+        textAlign: 'center',
+        backgroundColor: COLOR_WHITE,
     },
+
+
+
+
+
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -69,7 +88,7 @@ export default StyleSheet.create({
     },
 
     action: {
-        backgroundColor: COLOR_PALETTE_PINK.COLOR,
+        backgroundColor: '#e02041',
         borderRadius: 8,
         height: 50,
         width: '48%',

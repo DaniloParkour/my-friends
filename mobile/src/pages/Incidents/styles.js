@@ -1,16 +1,24 @@
 import {StyleSheet} from 'react-native';
 import constants from 'expo-constants';
+import {COLOR_BLACK, COLOR_WHITE, COLOR_PALETTE_PINK, COLOR_PALETTE_GREEN, COLOR_PALETTE_BLUE} from '../../util/AppConstants';
 
 export default StyleSheet.create ({
     container: {
         flex: 1,
-        paddingHorizontal: 24,
+        paddingHorizontal: 16,
         paddingTop: constants.statusBarHeight + 20,
     },
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+    },
+    navBar: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        paddingBottom: 20,
+        width: 140,
     },
     headerText: {
         fontSize: 15,
@@ -21,9 +29,9 @@ export default StyleSheet.create ({
     },
     title: {
         fontSize: 30,
-        marginBottom: 16,
+        marginBottom: 4,
         marginTop: 48,
-        color: '#13131a',
+        color: COLOR_PALETTE_PINK.COLOR,
         fontWeight: 'bold',
     },
     description: {
@@ -32,23 +40,25 @@ export default StyleSheet.create ({
         color: '#737380',
     },
     incident: {
-        padding: 24,
+        padding: 12,
         borderRadius: 8,
         backgroundColor: '#fff',
         marginBottom: 16,
+        borderWidth: 1,
+        borderColor: COLOR_PALETTE_PINK.COLOR,
     },
     incidentList: {
-        marginTop: 32,
+        marginTop: 18,
     },
     incidentProperty: {
         fontSize: 14,
-        color: '#41414d',
+        color: COLOR_PALETTE_PINK.COLOR,
         fontWeight: 'bold',
     },
     incidentValue: {
-        marginTop: 8,
         fontSize: 15,
-        marginBottom: 24,
+        marginLeft: 4,
+        marginBottom: 8,
         color: '#737380',
     },
     detailsButton: {
