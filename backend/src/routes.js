@@ -50,7 +50,7 @@ routes.post('/ongs', celebrate( {
     [Segments.BODY]: Joi.object().keys({
         name: Joi.string().required(),  //.min(3).max(20) //Test if have 3+ characers and 20- charatcers
         email: Joi.string().required().email(),
-        whatsapp: Joi.string().required().min(14).max(15),
+        whatsapp: Joi.string().required().min(12).max(13),
         city: Joi.string().required(),
         uf: Joi.string().required().length(2), //length(2): Have just 2 characters
         cnpj: Joi.string().optional(),
