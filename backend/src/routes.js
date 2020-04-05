@@ -6,6 +6,9 @@ const OngController = require('./controllers/OngController');
 const IncidentController = require('./controllers/IncidentController');
 const ProfileController = require('./controllers/ProfileController');
 const SessionController = require('./controllers/SessionController');
+const UserController = require('./controllers/UserController');
+
+const generateUniqueId = require('./util/generateUniqueId');
 
 //const connection = require('./database/conections');
 
@@ -40,6 +43,8 @@ routes.get('/profile', celebrate({
 }), ProfileController.index);
 
 routes.post('/sessions', SessionController.create);
+
+routes.post('/users', UserController.create);
 
 //USING CELEBRATE: https://www.npmjs.com/package/celebrate
 
